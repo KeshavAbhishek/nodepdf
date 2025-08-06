@@ -878,6 +878,16 @@ body.dark-mode .action-btn-secondary:hover {
         flex-direction: column !important;
         align-items: flex-start;
     }
+
+    body{
+        position: relative !important;
+    }
+
+    .theme-switch-wrapper{
+        position: absolute !important;
+        top: 2% !important;
+        right: 4% !important;
+    }
 }
 
 ::-webkit-scrollbar {
