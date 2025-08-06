@@ -1,0 +1,21 @@
+{
+  "name": "userregform",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "googleapis": "^154.1.0",
+    "mime-types": "^3.0.1",
+    "multer": "^2.0.2",
+    "node-cron": "^4.2.1",
+    "pdf-lib": "^1.17.1"
+  }
+}

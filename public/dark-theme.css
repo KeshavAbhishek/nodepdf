@@ -1,0 +1,240 @@
+/* static/css/dark-theme.css */
+/* --- Cosmic UI Overhaul --- */
+
+/* --- 1. DEFINE A REFINED & ELEGANT COLOR PALETTE --- */
+body.dark-mode {
+    /* A deep, near-black for the base background */
+    --bg-color: #0c0a14;
+
+    /* Subtle accent colors for a professional feel */
+    --primary-accent: #8b5cf6;
+    /* A sophisticated violet */
+    --secondary-accent: #3b82f6;
+    /* A calm blue */
+
+    /* Glassmorphism container styles */
+    --container-bg: rgba(20, 18, 30, 0.6);
+    --container-border: rgba(255, 255, 255, 0.1);
+    --container-shadow: rgba(0, 0, 0, 0.3);
+
+    /* High-contrast text colors for better visibility */
+    --text-primary: #ffffff;
+    /* Pure white for main text */
+    --text-secondary: #e5e7eb;
+    /* Bright gray for secondary text */
+
+    /* Header text and a single-color, soft glow */
+    --header-text-color: #ffffff;
+    /* Pure white for max contrast */
+    --header-glow-color: rgba(139, 92, 246, 0.4);
+    /* Softer glow */
+
+    /* Interactive element styles */
+    --card-bg: rgba(30, 27, 42, 0.5);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-hover-bg: rgba(41, 37, 57, 0.7);
+    --drop-area-bg: rgba(255, 255, 255, 0.02);
+    --drop-area-border: rgba(139, 92, 246, 0.2);
+    --drop-area-hover-border: rgba(139, 92, 246, 0.7);
+    --merge-btn-bg: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+    --merge-btn-shadow: rgba(139, 92, 246, 0.3);
+    --action-btn-bg: rgba(255, 255, 255, 0.04);
+    --action-btn-hover-bg: rgba(255, 255, 255, 0.08);
+    --remove-btn-color: #ff0000;
+    --remove-btn-bg: rgba(220, 38, 38, 0.1);
+    --remove-btn-hover-bg: rgba(220, 38, 38, 0.2);
+}
+
+
+/* --- 2. ANIMATED GRADIENT GRID BACKGROUND --- */
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body.dark-mode {
+    position: relative;
+    background-color: var(--bg-color);
+
+    /* Layered gradients: spotlights on top, grid below */
+    background-image:
+        /* Spotlights */
+        radial-gradient(circle at 15% 50%, var(--secondary-accent), transparent 0%),
+        radial-gradient(circle at 85% 50%, var(--primary-accent), transparent 0%),
+        /* Grid */
+        linear-gradient(rgba(139, 92, 246, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.07) 1px, transparent 1px);
+
+    background-size:
+        /* Spotlights */
+        200% 200%,
+        200% 200%,
+        /* Grid */
+        50px 50px,
+        50px 50px;
+
+    background-position: 0% 0%;
+
+    /* Make the spotlight layer move */
+    animation: moveBackground 15s ease-in-out infinite;
+}
+
+
+/* --- 3. APPLY THE NEW STYLES TO YOUR ELEMENTS --- */
+
+/* Main container with a refined glass effect */
+body.dark-mode .container {
+    background: var(--container-bg) !important;
+    border: 1px solid var(--container-border);
+    box-shadow: 0 8px 32px 0 var(--container-shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
+}
+
+/* Elegant header with a clean, soft glow */
+body.dark-mode .header h1 {
+    color: var(--header-text-color);
+    text-shadow: 0 0 12px var(--header-glow-color);
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
+
+/* Explicitly set text colors for high visibility */
+body.dark-mode .header p {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .upload-text {
+    color: var(--text-primary);
+}
+
+body.dark-mode .upload-subtext {
+    color: var(--text-secondary);
+}
+
+/* File card text colors */
+body.dark-mode .file-name {
+    color: var(--text-primary);
+}
+
+body.dark-mode .file-size {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .file-order {
+    color: var(--text-primary);
+    background-color: var(--action-btn-bg);
+}
+
+
+/* File drop area that blends beautifully */
+body.dark-mode .file-drop-area {
+    background: var(--drop-area-bg);
+    border: 2px dashed var(--drop-area-border);
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .file-drop-area:hover,
+body.dark-mode .file-drop-area.dragover {
+    border-color: var(--drop-area-hover-border);
+    background: rgba(139, 92, 246, 0.05);
+}
+
+/* Glass-like file cards */
+body.dark-mode .file-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+body.dark-mode .file-card:hover {
+    background: var(--card-hover-bg);
+    border-color: rgba(139, 92, 246, 0.5);
+    transform: translateY(-3px);
+}
+
+/* Update icons and buttons to match the theme */
+body.dark-mode .upload-icon {
+    color: var(--primary-accent);
+}
+
+body.dark-mode .file-icon {
+    background: linear-gradient(135deg, #c026d3, #9333ea);
+    box-shadow: 0 0 10px rgba(192, 38, 211, 0.4);
+}
+
+body.dark-mode .merge-btn {
+    background: var(--merge-btn-bg);
+    box-shadow: 0 4px 20px var(--merge-btn-shadow);
+}
+
+body.dark-mode .action-btn {
+    background: var(--action-btn-bg);
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+}
+
+body.dark-mode .action-btn:hover:not(:disabled) {
+    background: var(--action-btn-hover-bg);
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .remove-btn {
+    background: var(--remove-btn-bg);
+    color: var(--remove-btn-color);
+}
+
+body.dark-mode .remove-btn:hover {
+    background: var(--remove-btn-hover-bg);
+    color: #fecaca;
+}
+
+
+
+body>div.container>div.header>p {
+    color: white;
+}
+
+.upload-text,
+.upload-subtext {
+    color: white !important;
+}
+
+.reorder-btn{
+    background: transparent;
+    color: white;
+    border: 1px solid rgb(43, 43, 43) !important;
+}
+
+.reorder-btn:hover{
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+    background: var(--bg-color) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+}
+
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(135deg, #c026d3, #9333ea) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+}
