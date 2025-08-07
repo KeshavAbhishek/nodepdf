@@ -871,7 +871,7 @@ body.dark-mode .action-btn-secondary:hover {
     }
 
     h1 {
-        text-align: left !important;
+        /* text-align: left !important; */
     }
 
     .file-info-wrapper {
