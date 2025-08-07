@@ -4,7 +4,7 @@
 /* --- 1. DEFINE A REFINED & ELEGANT COLOR PALETTE --- */
 body.dark-mode {
     /* A deep, near-black for the base background */
-    --bg-color: #0c0a14;
+    --bg-color: #700000;
 
     /* Subtle accent colors for a professional feel */
     --primary-accent: #8b5cf6;
