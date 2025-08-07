@@ -182,4 +182,5 @@ cron.schedule('0 * * * *', async () => {
     }
 });
 
-app.listen(PORT, () => {});
+// app.listen(PORT, () => {});
+app.listen(3000, '0.0.0.0');
