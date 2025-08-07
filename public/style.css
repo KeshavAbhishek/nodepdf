@@ -870,10 +870,6 @@ body.dark-mode .action-btn-secondary:hover {
         width: 100%;
     }
 
-    h1 {
-        /* text-align: left !important; */
-    }
-
     .file-info-wrapper {
         flex-direction: column !important;
         align-items: flex-start;
