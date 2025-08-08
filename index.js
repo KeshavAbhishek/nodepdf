@@ -11,6 +11,15 @@ const cron = require('node-cron');
 const app = express();
 const PORT = 3000;
 
+// --- START: FIX ---
+// Ensure the 'uploads' directory exists before starting the application.
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+    console.log("Created 'uploads' directory for temporary files.");
+}
+// --- END: FIX ---
+
 const oauth2Client = new google.auth.OAuth2(
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,
@@ -53,6 +62,7 @@ app.post('/upload', upload.array('files'), async (req, res) => {
         });
         folderId = folder.data.id;
     } catch (err) {
+        console.error('Error creating Google Drive folder:', err.message);
         return res.status(500).json({ message: 'Failed to create folder.' });
     }
 
@@ -100,10 +110,14 @@ app.post('/upload', upload.array('files'), async (req, res) => {
                 downloadLink: links.data.webContentLink,
             });
 
-            fs.unlinkSync(filePath);
         } catch (err) {
-            console.error('File error:', err.message);
-            fs.unlinkSync(file.path);
+            console.error('File processing error:', err.message);
+            // Don't stop the whole process if one file fails, just skip it.
+        } finally {
+            // Always try to delete the temp file
+            if (fs.existsSync(filePath)) {
+                fs.unlinkSync(filePath);
+            }
         }
     }
 
@@ -147,9 +161,13 @@ app.post('/upload', upload.array('files'), async (req, res) => {
             downloadLink: links.data.webContentLink,
         };
 
-        fs.unlinkSync(mergedPath);
     } catch (err) {
         console.error('Error uploading merged PDF:', err.message);
+    } finally {
+        // Always try to delete the temp merged file
+        if (fs.existsSync(mergedPath)) {
+            fs.unlinkSync(mergedPath);
+        }
     }
 
     res.json({
@@ -182,5 +200,4 @@ cron.schedule('0 * * * *', async () => {
     }
 });
 
-// app.listen(PORT, () => {});
 app.listen(3000, '0.0.0.0');
