@@ -104,9 +104,9 @@ app.post('/upload', upload.array('files'), async (req, res) => {
         // Always delete the temporary upload directory and its contents
         if (tempUploadDir) {
             fs.rm(tempUploadDir, { recursive: true, force: true }, (err) => {
-                // if (err) {
-                //     console.error(`Error deleting temporary directory ${tempUploadDir}:`, err);
-                // }
+                if (err) {
+                    console.error(`Error deleting temporary directory ${tempUploadDir}:`, err);
+                }
             });
         }
     }
