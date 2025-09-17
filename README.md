@@ -30,7 +30,7 @@ If you want to run this locally, follow these steps:
    ```bash
    git clone https://github.com/KeshavAbhishek/nodepdf.git
    cd nodepdf
-```
+
 ## Screenshots
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/30dd930d-d47b-4ba2-a51a-5ce55999c117" />
 <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/4f8f3ea8-b755-4bf9-a14f-83231632c223" />
